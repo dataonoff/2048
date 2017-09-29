@@ -5,7 +5,7 @@
       var blockSize = (size/4)-20;
       var boardSize = size;
       var scoreadd = 0;
-      var time = new Audio('Ressources/Time.mp3');
+      var time = new Audio('Time.mp3');
       var muter = false;
       var paused = true;
       var left;
