@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>2048</title>
+    <link rel="shortcut icon" href="favicon.png">
+<style>
+body
+{
+    background: url("lol.gif") no-repeat fixed center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed ;
+    background-size: auto 100%;
+}
+header{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.chiffre{
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}
+mygame{
+  font-size: 40px;
+  text-align: center;
+  line-height:100px;
+  font-weight: bold;
+}
+.empty-container{
+  opacity:0.5;
+}
+.full-container{
+  opacity:0.8;
+}
+
+</style>
+</head>
+<body>
+  <header><img src="2048.png" alt="2048"></header>
+<score class="chiffre">SCORE: 0</score>
+<player>
+<button class="play" style="background-color:transparent; border-color:transparent;"><img src="playpause.png" height="25"/>
+</button>
+<button class="mute" style="background-color:transparent; border-color:transparent;"><img src="mute.png" height="25"/>
+</button>
+</player>
+<button class="swag" style="display: none; background-color:transparent; border-color:transparent"><img src="gameover.png"/></button>
+<mygame></mygame>
+<script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>
