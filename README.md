@@ -3,4 +3,6 @@
 
 Play here: https://dataonoff.github.io/2048/
 
+![Alt text](2048.gif?raw=true "Title")
+
 ![Alt text](2048_cover.PNG?raw=true "Title")
