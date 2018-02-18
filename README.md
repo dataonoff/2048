@@ -1,5 +1,6 @@
 # 2048
-2048 game developed with JavaScript.
+2048 game developed with JavaScript using JQuery.
+Play it on desktop browsers using keyboards arrows.
 
 Play here: https://dataonoff.github.io/2048/
 
