@@ -1,0 +1,112 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("assets/water_drop.gif") no-repeat fixed center center;
+  background-size:cover;
+}
+header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 500px;
+}
+mygame {
+  font-size: 40px;
+  text-align: center;
+  line-height:100px;
+  font-weight: bold;
+}
+#logo {
+  height: 80px;
+}
+.newGame{
+  display: none;
+  background-color:transparent;
+  border-color:transparent
+}
+#mainTable{
+  width: 500px;
+  height: 500px;
+  position: relative
+}
+.grid {
+  width:25%;
+  height:25%;
+  float: left;
+}
+.empty-container {
+  width:105px;
+  height:105px;
+  background-color:#6F82D0;
+  margin:10px;
+  border-radius:10px;
+  float: left;
+}
+.full-container {
+  width:105px;
+  height:105px;
+  background-color:white;
+  opacity:0.8;
+  border-radius: 10px;
+  margin:10px;
+  float: left;
+}
+@media only screen and (max-device-width:430px) {
+  header{
+    width: 360px;
+  }
+  mygame{
+    line-height: 82px;
+  }
+  #mainTable{
+    width: 360px;
+    height: 360px;
+    position: relative;
+    margin-right: 10px;
+  }
+  .empty-container {
+    width:80px;
+    height:80px;
+  }
+  .full-container {
+    width:80px;
+    height:80px;
+  }
+  #logo {
+    height: 50px;
+  }
+  .newGame > img{
+    height: 200px;
+  }
+}
+.playerSettings {
+  display: flex;
+  flex-direction: column;
+}
+#soundSettings{
+  display: flex;
+  flex-direction: row;
+}
+.score{
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.play {
+  background-color:transparent;
+  border-color:transparent;
+}
+.mute{
+  background-color:transparent;
+  border-color:transparent;
+}
+.empty-container{
+  opacity:0.5;
+}
+.full-container{
+  opacity:0.8;
+}
