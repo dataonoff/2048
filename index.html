@@ -1,74 +1,38 @@
 <!DOCTYPE html>
 <html  xmlns:og="http://ogp.me/ns#">
-  <head>
-    <meta charset="utf-8">
-    <title>2048</title>
-    <link rel="shortcut icon" href="favicon.png">
-    <meta property="og:title" content="Wanna play to the swag 2048?" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dataonoff.github.io/2048/" />
-<meta property="og:image" content="http://www.behindthevoiceactors.com/_img/chars/sanji-young-one-piece-2.69.jpg" />
-<meta property="og:description" content="Have fun!" />
-    
-<style>
-body
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("lol.gif") no-repeat;
-    background-position: center center;
-    background-repeat:  no-repeat;
-    background-attachment: fixed;
-    background-size:cover;
-}
-header{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-.chiffre{
-  text-align: center;
-  font-size: 20px;
-  color: white;
-}
-mygame{
-  font-size: 40px;
-  text-align: center;
-  line-height:100px;
-  font-weight: bold;
-}
-.empty-container{
-  opacity:0.5;
-}
-.full-container{
-  opacity:0.8;
-}
-
-</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link href="style.css" rel="stylesheet" />
+  <title>2048</title>
+  <link href="favicon.png" rel="shortcut icon">
+  <meta content="Wanna play to the 2048?" property="og:title" />
+  <meta content="article" property="og:type" />
+  <meta content="https://dataonoff.github.io/2048/" property="og:url" />
+  <meta content="http://www.behindthevoiceactors.com/_img/chars/sanji-young-one-piece-2.69.jpg" property="og:image" />
+  <meta content="Have fun!" property="og:description" />
 </head>
 <body>
-  <header><img src="2048.png" alt="2048"></header>
-<score class="chiffre">SCORE: 0</score>
-<player>
-<button class="play" style="background-color:transparent; border-color:transparent;"><img src="playpause.png" height="25"/>
+<header>
+  <img id="logo" alt="2048" src="assets/2048.png">
+  <div class="playerSettings">
+      <div class="score">SCORE: 0</div>
+    <div id="soundSettings">
+    <button class="play"><img height="25" alt='playPause' src="assets/play_pause.png"/>
+    </button>
+    <button class="mute" ><img height="25" alt='mute' src="assets/mute.png"/>
+    </button>
+  </div>
+  </div>
+</header>
+<button class="newGame">
+    <img alt="gameOver" src="assets/game_over.png"/>
 </button>
-<button class="mute" style="background-color:transparent; border-color:transparent;"><img src="mute.png" height="25"/>
-</button>
-</player>
-<button class="swag" style="display: none; background-color:transparent; border-color:transparent"><img src="gameover.png"/></button>
 <mygame></mygame>
 <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+        crossorigin="anonymous"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
