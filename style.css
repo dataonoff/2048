@@ -5,7 +5,6 @@ body {
   align-items: center;
   background: url("assets/water_drop.gif") no-repeat fixed center center;
   background-size:cover;
-  position: fixed;
 }
 header{
   display: flex;
