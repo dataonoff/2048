@@ -65,6 +65,12 @@ mygame {
     height: 360px;
     position: relative;
     margin-right: 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -ms-touch-action: none;
+    touch-action: none;
   }
   .empty-container {
     width:80px;
