@@ -56,12 +56,7 @@
       };
 
       const randomTwoFour = () => {
-        const randSquare =Math.floor(Math.random() *2+1);
-        if (randSquare === 1) {
-          return 2;
-        } else {
-          return 4;
-        }
+          return Math.random() < 0.9 ? 2 : 4;
       };
 
       const RandomSquare = () => {
@@ -76,6 +71,7 @@
 
       $('.newGame').click(() => {
         $(".newGame").hide();
+        $("#mainTable").removeClass("mainTableEndGame");
         $('mygame').empty();
         createBox();
         createEmptyContainers();
@@ -145,8 +141,8 @@
           }
           if (gameIsOver) {
             gameOver = true;
-            $("mygame").delay(1500).fadeOut(800);
-            $(".newGame").delay(2300).fadeIn(1000);
+            $("#mainTable").delay(2000).addClass("mainTableEndGame");
+            $(".newGame").delay(2000).fadeIn(1000);
           }
         }
       }
