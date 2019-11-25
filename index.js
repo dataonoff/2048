@@ -46,11 +46,29 @@
         $(".grid").append("<div class='empty-container'></div>");
       };
 
+      const yourScore = (calc) => {
+        score = score + calc;
+        $(".scoreBox").replaceWith("<div class='scoreBox'><span>SCORE</span><div class='score'>"+score+"</div><span class='scoreAddition'></span></div>");
+      };
+
+      const updateMergedSum = (mergedSumPerMove) => {
+        $(".scoreAddition").replaceWith("<span class='scoreAddition'>+"+mergedSumPerMove+"</span>");
+      };
+
+      const randomTwoFour = () => {
+        const randSquare =Math.floor(Math.random() *2+1);
+        if (randSquare === 1) {
+          return 2;
+        } else {
+          return 4;
+        }
+      };
+
       const RandomSquare = () => {
         const randSquare = Math.floor(Math.random() * 16);
         const emptySquare = $("#"+randSquare).children().text() === "";
         if (emptySquare) {
-          $('#'+randSquare).children().replaceWith("<div class='full-container'>"+randomTwoFour()+"</div>");
+          $('#'+randSquare).children().replaceWith("<div class='full-container new-container'>"+randomTwoFour()+"</div>");
         }
         else {
           RandomSquare()}
@@ -64,7 +82,7 @@
         RandomSquare();
         RandomSquare();
         $("mygame").fadeIn(1000);
-        $(".score").replaceWith("<div class='score'>SCORE: 0</div>");
+        $(".scoreBox").replaceWith("<div class='scoreBox'><span>SCORE</span><div class='score'>0</div></div>");
         score = 0;
         gameOver = false;
       });
@@ -133,21 +151,6 @@
         }
       }
 
-
-      function YourScore(calc){
-        score = score + calc;
-        $(".score").replaceWith("<div class='score'>SCORE: "+score+"</div>");
-    }
-
-    function randomTwoFour(){
-        const randSquare =Math.floor(Math.random() *2+1);
-        if (randSquare === 1) {
-            return 2;
-        } else {
-          return 4;
-        }
-    }
-
     //if empty spaces remove them and replace by the side value
     const handleBoxMove = (moveConf, increment, isAxis) => {
       let boxHasBeenMoved = false;
@@ -161,7 +164,7 @@
                 increment ? emptyBoxes++ : emptyBoxes--;
                 // if box is full and I am not in first position
               } else if ((boxStringValue !== "") && (emptyBoxes !== 0)){
-                $(($('[x="'+x+'"][y="'+(y+emptyBoxes)+'"]')).children().replaceWith("<div class='full-container'>"+boxStringValue+"</div>"));
+                $(($('[x="'+x+'"][y="'+(y+emptyBoxes)+'"]')).children().replaceWith("<div class='full-container tile-"+boxStringValue+"''>"+boxStringValue+"</div>"));
                 $(($('[x="'+x+'"][y="'+y+'"]')).children().replaceWith("<div class='empty-container'></div>"));
                 boxHasBeenMoved = true;
               }
@@ -177,7 +180,7 @@
               increment ? emptyBoxes++ : emptyBoxes--;
               // if box is full and I am not in first position
             } else if ((boxStringValue !== "") && (emptyBoxes !== 0)){
-              $(($('[x="'+(x+emptyBoxes)+'"][y="'+y+'"]')).children().replaceWith("<div class='full-container'>"+boxStringValue+"</div>"));
+              $(($('[x="'+(x+emptyBoxes)+'"][y="'+y+'"]')).children().replaceWith("<div class='full-container tile-"+boxStringValue+"''>"+boxStringValue+"</div>"));
               $(($('[x="'+x+'"][y="'+y+'"]')).children().replaceWith("<div class='empty-container'></div>"));
               boxHasBeenMoved = true;
             }
@@ -189,6 +192,7 @@
 
       // handle addition for boxes sharing the same value and standing side by side
       const handleAddition = (moveConf, additionDirection, isAxis) => {
+        let mergedBoxSum = 0;
         let boxHasBeenMoved = false;
         if (isAxis) {
           for (let x of moveConf) {
@@ -197,10 +201,11 @@
               const sideValue = ($('[x="'+x+'"][y="'+(y+additionDirection)+'"]')).children().text();
               const calc = value * 2;
               if (value === sideValue && value !== ""){
-                $(($('[x="'+x+'"][y="'+(y)+'"]')).children().replaceWith("<div class='full-container'>"+calc+"</div>"));
+                $(($('[x="'+x+'"][y="'+(y)+'"]')).children().replaceWith("<div class='full-container tile-"+calc+"'>"+calc+"</div>"));
                 $(($('[x="'+x+'"][y="'+(y+additionDirection)+'"]')).children().replaceWith("<div class='empty-container'></div>"));
                 boxHasBeenMoved = true;
-                YourScore(calc);
+                yourScore(calc);
+                mergedBoxSum = mergedBoxSum + calc;
               }
             }
           }
@@ -211,13 +216,17 @@
               const sideValue = ($('[x="'+(x+additionDirection)+'"][y="'+y+'"]')).children().text();
               const calc = value * 2;
               if (value === sideValue && value !== ""){
-                $(($('[x="'+x+'"][y="'+(y)+'"]')).children().replaceWith("<div class='full-container'>"+calc+"</div>"));
+                $(($('[x="'+x+'"][y="'+(y)+'"]')).children().replaceWith("<div class='full-container tile-"+calc+"''>"+calc+"</div>"));
                 $(($('[x="'+(x+additionDirection)+'"][y="'+y+'"]')).children().replaceWith("<div class='empty-container'></div>"));
                 boxHasBeenMoved = true;
-                YourScore(calc);
+                yourScore(calc);
+                mergedBoxSum = mergedBoxSum + calc;
               }
             }
           }
+        }
+        if (boxHasBeenMoved) {
+          updateMergedSum(mergedBoxSum);
         }
         return boxHasBeenMoved;
       };
@@ -297,7 +306,6 @@
             moveBoxes(rightDownConf, true, -1, false);
           }
         }
-
         initialX = null;
         initialY = null;
         e.preventDefault();

@@ -43,6 +43,7 @@ mygame {
   margin:10px;
   border-radius:10px;
   float: left;
+  opacity:0.5;
 }
 .full-container {
   width:105px;
@@ -52,6 +53,12 @@ mygame {
   border-radius: 10px;
   margin:10px;
   float: left;
+}
+.new-container{
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s; /* Firefox < 16 */
+  -o-animation: fadein 1s; /* Opera < 12.1 */
+  animation: fadein 1s;
 }
 @media only screen and (max-device-width:430px) {
   header{
@@ -95,13 +102,32 @@ mygame {
   display: flex;
   flex-direction: row;
 }
-.score{
+.scoreBox{
   text-align: center;
-  font-size: 20px;
+  font-size: 13px;
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  background-color: #6F82D0;
+  padding: 2px;
+  border-radius: 10px;
 }
-
+.score {
+  font-size: 23px;
+  font-weight: bold;
+}
+.scoreAddition{
+  position: absolute;
+  margin-left: -15px;
+  -webkit-animation: moveUp 600ms ease-in;
+  -moz-animation: moveUp 600ms ease-in;
+  animation: moveUp 600ms ease-in;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+  font-size: 21px;
+  font-weight: bold;
+  color: black;
+}
 .play {
   background-color:transparent;
   border-color:transparent;
@@ -110,9 +136,96 @@ mygame {
   background-color:transparent;
   border-color:transparent;
 }
-.empty-container{
-  opacity:0.5;
+
+/* animation effect */
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
-.full-container{
-  opacity:0.8;
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes moveUp {
+  0% {
+    top:30px;
+  }
+  100% {
+    top: -20px;
+  }
+}
+@keyframes moveUp {
+  0% {
+    top:30px;
+  }
+  100% {
+    top: -20px;
+  }
+}
+
+/*tile css*/
+.tile-8 {
+  color: #f9f6f2;
+  background: #ff9c75;
+}
+.tile-16 {
+  color: #f9f6f2;
+  background: #ff5500;
+}
+.tile-32 {
+  color: #f9f6f2;
+  background: #ff3826;
+}
+.tile-64 {
+  color: #f9f6f2;
+  background: #ff661a;
+}
+.tile-128 {
+  color: #f9f6f2;
+  background: #e62a1a;
+}
+.tile-256 {
+  color: #f9f6f2;
+  background: #e60f45;
+}
+.tile-512 {
+  color: #f9f6f2;
+  background: #e618b0;
+}
+.tile-1024 {
+  color: #f9f6f2;
+  background: #be27e6;
+}
+.tile-2048 {
+  color: #90cfe6;
+  background: #ff0000;
+  animation-duration: 600ms;
+  animation-name: blink;
+  animation-iteration-count: 12;
+  animation-direction: alternate;
+}
+.tile-4096 {
+  color: #f9f6f2;
+  background: #e6e600;
+}
+.tile-8192 {
+  color: #f9f6f2;
+  background: #999900;
 }
