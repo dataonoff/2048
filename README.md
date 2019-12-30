@@ -5,4 +5,4 @@ Play it on mobile by swiping.
 
 Play here: https://dataonoff.github.io/2048/
 
-![Alt text](assets/2048.gif?raw=true "Title")
+![Alt text](assets/demo.gif?raw=true "Title")
